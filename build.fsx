@@ -16,7 +16,7 @@ let clientPath = Path.getFullName "./src/Client"
 
 let platformTool tool winTool =
     let tool = if Environment.isUnix then tool else winTool
-    match Process.tryFindFileOnPath tool with
+    match ProcessUtils.tryFindFileOnPath tool with
     | Some t -> t
     | _ ->
         let errorMsg =
@@ -28,7 +28,7 @@ let platformTool tool winTool =
 let nodeTool = platformTool "node" "node.exe"
 let npmTool = platformTool "npm" "npm.cmd"
 
-let install = lazy DotNet.install DotNet.Release_2_1_300
+let install = lazy DotNet.install DotNet.Versions.FromGlobalJson
 
 let inline withWorkDir wd =
     DotNet.Options.lift install.Value
@@ -46,7 +46,7 @@ let runTool cmd args workingDir =
 
 let runDotNet cmd workingDir =
     let result =
-        DotNet.exec (withWorkDir workingDir) cmd ""
+        DotNet.exec (DotNet.Options.withWorkingDirectory workingDir) cmd ""
     if result.ExitCode <> 0 then failwithf "'dotnet %s' failed in %s" cmd workingDir
 
 let openBrowser url =
@@ -60,15 +60,13 @@ let openBrowser url =
     if result <> 0 then failwithf "opening browser failed"
 
 Target.create "InstallClient" (fun _ ->
-    printfn "Node version:"
+    Trace.tracefn "Node version:"
     runTool nodeTool "--version" __SOURCE_DIRECTORY__
     printfn "Npm version:"
     runTool npmTool "--version"  __SOURCE_DIRECTORY__
     runTool npmTool "install" __SOURCE_DIRECTORY__
     runDotNet "restore" clientPath
 )
-
-
 
 Target.create "Build" (fun _ ->
     runDotNet "fable webpack -- -p" clientPath
@@ -79,7 +77,7 @@ Target.create "Run" (fun _ ->
         runDotNet "fable webpack-dev-server" clientPath
     }
     let browser = async {
-        Threading.Thread.Sleep 5000
+        do! Async.Sleep 5000
         openBrowser "http://localhost:8080"
     }
 
@@ -89,7 +87,6 @@ Target.create "Run" (fun _ ->
     |> ignore
 )
 
-
 open Fake.Core.TargetOperators
 
 "InstallClient"
@@ -98,4 +95,5 @@ open Fake.Core.TargetOperators
 "InstallClient"
     ==> "Run"
 
-Target.runOrDefault "Build"
+Target.runOrDefaultWithArguments "Build"
+

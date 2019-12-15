@@ -1,3 +1,11 @@
+// Template for webpack.config.js in Fable projects
+// Find latest version in https://github.com/fable-compiler/webpack-config-template
+
+// In most cases, you'll only need to edit the CONFIG object (after dependencies)
+// See below if you need better fine-tuning of Webpack options
+
+// Dependencies. Also required: core-js, fable-loader, fable-compiler, @babel/core,
+// @babel/preset-env, babel-loader, sass, sass-loader, css-loader, style-loader, file-loader
 var path = require("path");
 var webpack = require("webpack");
 var fableUtils = require("fable-utils");
@@ -25,7 +33,7 @@ console.log("Bundling for " + (isProduction ? "production" : "development") + ".
 
 module.exports = {
     devtool: "source-map",
-    entry: resolve('./Client.fsproj'),
+    entry: resolve('./src/Client/Client.fsproj'),
     mode: isProduction ? "production" : "development",
     output: {
         path: resolve('./public/js'),
@@ -33,7 +41,9 @@ module.exports = {
         filename: "bundle.js"
     },
     resolve: {
-        modules: [resolve("../../node_modules/")]
+        modules: [resolve("../../node_modules/")],
+        // See https://github.com/fable-compiler/Fable/issues/1490
+        symlinks: false
     },
     devServer: {
         proxy: {
@@ -46,6 +56,8 @@ module.exports = {
         hot: true,
         inline: true
     },
+    // - fable-loader: transforms F# into JS
+    // - babel-loader: transforms JS to old syntax (compatible with old browsers)
     module: {
         rules: [
             {
