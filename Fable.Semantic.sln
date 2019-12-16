@@ -1,11 +1,26 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Client", "Client\Client.fsproj", "{CF2221DF-76B1-4FD0-A068-69A1878DBD9D}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Client", "src\Client\Client.fsproj", "{CF2221DF-76B1-4FD0-A068-69A1878DBD9D}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Fable.Semantic", "Fable.Semantic\Fable.Semantic.fsproj", "{97037515-B83A-483D-91FD-D7063AE587DD}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Fable.Semantic", "src\Fable.Semantic\Fable.Semantic.fsproj", "{97037515-B83A-483D-91FD-D7063AE587DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{6DAF6B49-A051-4116-9AB9-1F9D3A371D49}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		build.cmd = build.cmd
+		build.fsx = build.fsx
+		build.sh = build.sh
+		global.json = global.json
+		package-lock.json = package-lock.json
+		package.json = package.json
+		paket.dependencies = paket.dependencies
+		paket.lock = paket.lock
+		README.md = README.md
+		webpack.config.js = webpack.config.js
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +30,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{CF2221DF-76B1-4FD0-A068-69A1878DBD9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -44,5 +56,11 @@ Global
 		{97037515-B83A-483D-91FD-D7063AE587DD}.Release|x64.Build.0 = Release|Any CPU
 		{97037515-B83A-483D-91FD-D7063AE587DD}.Release|x86.ActiveCfg = Release|Any CPU
 		{97037515-B83A-483D-91FD-D7063AE587DD}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3133F848-2941-41D9-9689-55D1FF8F5F77}
 	EndGlobalSection
 EndGlobal
