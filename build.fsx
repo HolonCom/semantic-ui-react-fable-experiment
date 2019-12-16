@@ -49,6 +49,11 @@ let runDotNet cmd workingDir =
         DotNet.exec (DotNet.Options.withWorkingDirectory workingDir) cmd ""
     if result.ExitCode <> 0 then failwithf "'dotnet %s' failed in %s" cmd workingDir
 
+let runNpx cmd workingDir =
+    let result =
+        DotNet.exec (DotNet.Options.withWorkingDirectory workingDir) cmd ""
+    if result.ExitCode <> 0 then failwithf "'npx %s' failed in %s" cmd workingDir
+
 let openBrowser url =
     let result =
         //https://github.com/dotnet/corefx/issues/10361
@@ -69,7 +74,7 @@ Target.create "InstallClient" (fun _ ->
 )
 
 Target.create "Build" (fun _ ->
-    runDotNet "fable webpack -- -p" clientPath
+    runNpx "webpack -p" clientPath
 )
 
 Target.create "Run" (fun _ ->
