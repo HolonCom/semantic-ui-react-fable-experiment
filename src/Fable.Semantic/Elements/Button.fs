@@ -125,9 +125,9 @@ module Button =
       | Negative of bool
       ///Called after user's click. 
       /// OnClick ( fun (event, data) -> .. ) 
-      /// event - React's original SyntheticEvent.
+      /// event - Browser.Types.MouseEvent.
       /// data - All props.
-      | OnClick of  (( React.SyntheticEvent * obj) -> unit)
+      | OnClick of  (( Browser.Types.MouseEvent * obj) -> unit)
       ///A button can hint towards a positive consequence.
       | Positive of bool 
       //A button can be formatted to show different levels of emphasis.

@@ -41,7 +41,7 @@ module Breadcrumb =
       | ClassName of string
       | Href of string
       | Link of bool
-      | OnCLick of (SyntheticEvent * obj -> unit)
+      | OnCLick of (Browser.Types.MouseEvent * obj -> unit)
       | Props of IHTMLProp list
       with interface IHTMLProp
 

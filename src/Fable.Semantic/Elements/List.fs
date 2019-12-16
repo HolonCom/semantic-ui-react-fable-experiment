@@ -13,7 +13,7 @@ module List =
      | Active of bool
      | ClassName of string
      | Disabled of bool
-     | OnClick of (SyntheticEvent * obj -> unit)
+     | OnClick of (Browser.Types.MouseEvent * obj -> unit)
      | Value of string
      | Props of IHTMLProp list
      with interface IHTMLProp
@@ -64,7 +64,7 @@ module List =
    | Inverted of bool
    | Items of Item.Options
    | Link of bool
-   | OnItemClick of (SyntheticEvent * obj -> unit)
+   | OnItemClick of (Browser.Types.MouseEvent * obj -> unit)
    | Ordered of bool
    | IsRelaxed of bool
    | Relaxed of Relaxed

@@ -27,7 +27,7 @@ module Menu =
   | Icon of Semantic.Elements.Icons.IIcon
   | [<CompiledName "icon">]IsIcon of bool
   | Inverted of bool
-  | OnItemClick of (SyntheticEvent * obj -> unit)
+  | OnItemClick of (Browser.Types.MouseEvent * obj -> unit)
   | Pagination of bool
   | Secondary of bool
   | Size of Semantic.Sizes
@@ -89,7 +89,7 @@ module Menu =
     | Index of int
     | Link of bool
     | Name of string
-    | OnClick of (SyntheticEvent * obj -> unit)
+    | OnClick of (Browser.Types.MouseEvent * obj -> unit)
     | Position of Semantic.Floats
     | Props of IHTMLProp list
     with interface IHTMLProp

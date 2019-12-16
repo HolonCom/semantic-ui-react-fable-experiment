@@ -49,8 +49,8 @@ module Label =
   | Icon of Semantic.Elements.Icons.IIcon
   | [<CompiledName "image">]IsImage of bool
   | Image of ReactElement //TODO create rec options
-  | OnClick of (SyntheticEvent * obj -> unit)
-  | OnRemove of (SyntheticEvent * obj -> unit)
+  | OnClick of (Browser.Types.MouseEvent * obj -> unit)
+  | OnRemove of (Browser.Types.MouseEvent * obj -> unit)
   | [<CompiledName "pointing">]IsPointing of bool
   | Pointing of Pointing 
   | RemoveIcon of Semantic.Elements.Icons.IIcon

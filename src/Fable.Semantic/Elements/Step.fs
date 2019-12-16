@@ -22,7 +22,7 @@ module Step =
     | Href of string
     | Icon of Semantic.Elements.Icons.IIcon
     | Link of bool
-    | OnClick of (SyntheticEvent * obj -> unit)
+    | OnClick of (Browser.Types.MouseEvent * obj -> unit)
     | Ordered of bool
     // | Title of Title.Options list
     | Props of IHTMLProp list

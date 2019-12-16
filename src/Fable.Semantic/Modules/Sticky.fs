@@ -13,10 +13,10 @@ module Sticky =
   | ClassName of string
   | Context of obj
   | Offset of int
-  | OnBottom of ( SyntheticEvent -> obj -> unit)
-  | OnSick of (SyntheticEvent -> obj -> unit)
-  | OnTop of (SyntheticEvent -> obj -> unit)
-  | OnUnstick of (SyntheticEvent -> obj -> unit)
+  | OnBottom of ( Browser.Types.MouseEvent -> obj -> unit)
+  | OnSick of (Browser.Types.MouseEvent -> obj -> unit)
+  | OnTop of (Browser.Types.MouseEvent -> obj -> unit)
+  | OnUnstick of (Browser.Types.MouseEvent -> obj -> unit)
   | Pushing of bool
   | ScrollContext of obj
   | Props of IHTMLProp list

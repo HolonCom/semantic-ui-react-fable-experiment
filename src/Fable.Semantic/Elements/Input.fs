@@ -40,7 +40,7 @@ module Input =
       | Loading of bool 
       ///Called after user's click. 
       /// OnClick ( fun (event, data) -> .. ) 
-      /// event - React's original SyntheticEvent.
+      /// event - Browser.Types.MouseEvent.
       /// data - All props.
       | OnChange of  (Browser.Types.MouseEvent ->  Val -> unit)
       ///An Input can vary in size.

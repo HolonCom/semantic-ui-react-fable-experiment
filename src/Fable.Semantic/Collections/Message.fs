@@ -20,7 +20,7 @@ module Message =
   | Icon of Semantic.Elements.Icons.IIcon
   | Info of bool 
   | Negative of bool
-  | OnDismiss of (SyntheticEvent -> obj -> unit)
+  | OnDismiss of (Browser.Types.MouseEvent -> obj -> unit)
   | Positive of bool
   | Size of Semantic.Sizes
   | Success of bool

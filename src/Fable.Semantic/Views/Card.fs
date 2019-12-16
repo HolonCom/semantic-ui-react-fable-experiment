@@ -16,7 +16,7 @@ module Card =
   | Fluid of bool
   | Href of string
   | Link of bool
-  | OnClick of (SyntheticEvent -> obj -> unit)
+  | OnClick of (Browser.Types.MouseEvent -> obj -> unit)
   | Raised of bool
   | Props of IHTMLProp list
   with interface IHTMLProp
