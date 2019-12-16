@@ -1,6 +1,7 @@
 namespace Semantic.Elements.Api
 open Fable.Core
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 
 [<RequireQualifiedAccess>]
 module Loader =
@@ -23,4 +24,4 @@ module Loader =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Loader" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Loader" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  

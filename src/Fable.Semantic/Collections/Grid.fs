@@ -1,8 +1,7 @@
 namespace Semantic.Collections.Api
 open Fable.Core
-open Fable.Import.React
-open Fable.Helpers.React.Props
-open Fable.Helpers.React
+open Fable.React.Props
+open Fable.React
 open System.Drawing
 
 [<RequireQualifiedAccessAttribute>]
@@ -40,7 +39,7 @@ module Grid =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Grid" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Grid" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
   
   module Column =
 
@@ -66,7 +65,7 @@ module Grid =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Column.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Grid.Column" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Grid.Column" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
       
   module Row =
     type Options =
@@ -88,4 +87,4 @@ module Grid =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Row.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Grid.Row" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Grid.Row" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  

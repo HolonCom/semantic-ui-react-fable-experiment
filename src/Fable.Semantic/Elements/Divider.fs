@@ -1,5 +1,7 @@
 namespace Semantic.Elements.Api
 
+open Fable.React
+
 [<RequireQualifiedAccess>]
 module Divider =
   open Fable.Core
@@ -22,11 +24,11 @@ module Divider =
       ///Divider can segment content vertically.
       | Vertical of bool
        ///Other React props
-    | Props of Fable.Helpers.React.Props.IHTMLProp list
-    with interface Fable.Helpers.React.Props.IHTMLProp
+    | Props of Fable.React.Props.IHTMLProp list
+    with interface Fable.React.Props.IHTMLProp
   let divider (props : Options list ) =
        let p = props |> List.fold ( fun s x -> match x with 
                                                 | Props x -> s @ x 
-                                                | a -> (a :> Fable.Helpers.React.Props.IHTMLProp ) :: s  ) []
-       Fable.Helpers.React.ofImport "Divider" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+                                                | a -> (a :> Fable.React.Props.IHTMLProp ) :: s  ) []
+       ofImport "Divider" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
 

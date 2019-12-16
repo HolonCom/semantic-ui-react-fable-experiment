@@ -1,5 +1,6 @@
 namespace Semantic.Elements.Api
 open Fable.Core
+open Fable.React
 
 [<RequireQualifiedAccess>]
 module Header = 
@@ -8,16 +9,16 @@ module Header =
     | As of string
     | ClassName of string
     ///Other React props
-    | Props of Fable.Helpers.React.Props.IHTMLProp list
-    with interface Fable.Helpers.React.Props.IHTMLProp
+    | Props of Fable.React.Props.IHTMLProp list
+    with interface Fable.React.Props.IHTMLProp
 
   module Subheader =
     type Options =
     | As of string
     | ClassName of string
     ///Other React props
-    | Props of Fable.Helpers.React.Props.IHTMLProp list
-    with interface Fable.Helpers.React.Props.IHTMLProp
+    | Props of Fable.React.Props.IHTMLProp list
+    with interface Fable.React.Props.IHTMLProp
 
   [<StringEnum>]
   type Attached = | Top | Bottom
@@ -40,22 +41,22 @@ module Header =
   | Sub of bool
   | TextAlign of Semantic.TextAlignments
   ///Other React props
-  | Props of Fable.Helpers.React.Props.IHTMLProp list
-    with interface Fable.Helpers.React.Props.IHTMLProp
+  | Props of Fable.React.Props.IHTMLProp list
+    with interface Fable.React.Props.IHTMLProp
   
   let header (props: Options list)  =
         let p = props |> List.fold ( fun s x -> match x with 
                                                 | Props x -> s @ x 
-                                                | a -> (a :> Fable.Helpers.React.Props.IHTMLProp ) :: s  ) [] 
-        Fable.Helpers.React.ofImport "Header" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+                                                | a -> (a :> Fable.React.Props.IHTMLProp ) :: s  ) [] 
+        ofImport "Header" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
   let content (props : Content.Options list) =
         let p = props |> List.fold ( fun s x -> match x with 
                                                 | Content.Props x -> s @ x 
-                                                | a -> (a :> Fable.Helpers.React.Props.IHTMLProp ) :: s  ) [] 
-        Fable.Helpers.React.ofImport "Header.Content" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+                                                | a -> (a :> Fable.React.Props.IHTMLProp ) :: s  ) [] 
+        ofImport "Header.Content" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
 
   let subheader (props : Subheader.Options list) =
         let p = props |> List.fold ( fun s x -> match x with 
                                                 | Subheader.Props x -> s @ x 
-                                                | a -> (a :> Fable.Helpers.React.Props.IHTMLProp ) :: s  ) [] 
-        Fable.Helpers.React.ofImport "Header.Subheader" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+                                                | a -> (a :> Fable.React.Props.IHTMLProp ) :: s  ) [] 
+        ofImport "Header.Subheader" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)

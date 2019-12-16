@@ -1,7 +1,8 @@
 namespace Semantic.Elements.Api
 open Fable.Core
 open System.Runtime.CompilerServices
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 [<RequireQualifiedAccess>]
 module Reveal = 
    [<StringEnum>]
@@ -29,7 +30,7 @@ module Reveal =
          let p = props |> List.fold ( fun s x -> match x with 
                                                  | Props x -> s @ x 
                                                  | a -> (a :> IHTMLProp ) :: s  ) []
-         Fable.Helpers.React.ofImport "Reveal" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+         ofImport "Reveal" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
    module Content = 
      type Options =
@@ -43,4 +44,4 @@ module Reveal =
          let p = props |> List.fold ( fun s x -> match x with 
                                                  | Content.Props x -> s @ x 
                                                  | a -> (a :> IHTMLProp ) :: s  ) []
-         Fable.Helpers.React.ofImport "Reveal.Content" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+         ofImport "Reveal.Content" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  

@@ -1,7 +1,8 @@
 namespace Semantic.Views.Api
 
 open Fable.Core
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open System.Drawing
 
 [<RequireQualifiedAccess>]
@@ -24,7 +25,7 @@ module Statistic =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Statistic" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Statistic" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Group =
     type Options =
@@ -42,7 +43,7 @@ module Statistic =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Group.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Statistic.Group" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Statistic.Group" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Label =
     type Options =
@@ -55,7 +56,7 @@ module Statistic =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Label.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Statistic.Label" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Statistic.Label" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Value =
     type Options =
@@ -69,4 +70,4 @@ module Statistic =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Value.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Statistic.Value" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Statistic.Value" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  

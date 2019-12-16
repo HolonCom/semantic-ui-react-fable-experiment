@@ -1,10 +1,8 @@
 namespace Semantic.Collections.Api
 
 open Fable.Core
-open Semantic
-open Semantic
-open Fable.Helpers.React.Props
-open Fable.Import.React
+open Fable.React.Props
+open Fable.React
 open Semantic
 
 [<RequireQualifiedAccess>]
@@ -32,7 +30,7 @@ module Form =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Form" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Form" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
   module Button =
     type Options =
     | As of string
@@ -43,7 +41,7 @@ module Form =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Button.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Form.Button" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Form.Button" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
   
   module Checkbox =
     type Options =
@@ -55,7 +53,7 @@ module Form =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Checkbox.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Form.Checkbox" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Form.Checkbox" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Dropdown =
     type Options =
@@ -67,7 +65,7 @@ module Form =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Dropdown.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Form.Dropdown" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Form.Dropdown" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Input =
     type Options =
@@ -79,7 +77,7 @@ module Form =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Input.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Form.Input" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Form.Input" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Radio =
     type Options =
@@ -91,7 +89,7 @@ module Form =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Radio.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Form.Input" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+    ofImport "Form.Input" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
 
   module TextArea =
     type Options =
@@ -103,7 +101,7 @@ module Form =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | TextArea.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Form.TextArea" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+    ofImport "Form.TextArea" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
 
   module Select =
     type Options =
@@ -116,7 +114,7 @@ module Form =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Select.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Form.Select" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+    ofImport "Form.Select" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
 
   module Group =
     [<StringEnum>]
@@ -135,7 +133,7 @@ module Form =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Group.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Form.Group" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+    ofImport "Form.Group" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
 
   module Field =
     type Options =
@@ -156,4 +154,4 @@ module Form =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Field.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Form.Field" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+    ofImport "Form.Field" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)

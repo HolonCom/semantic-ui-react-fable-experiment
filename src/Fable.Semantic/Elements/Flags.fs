@@ -1,6 +1,7 @@
 namespace Semantic.Elements.Flags
 
 open Fable.Core
+open Fable.React
 
 [<StringEnum>]
 type Flag =
@@ -498,7 +499,7 @@ type Flag =
 
 namespace Semantic.Elements.Api
 open Fable.Core
-open Fable.Helpers.React
+open Fable.React
 
 [<RequireQualifiedAccess>]
 module Flag =
@@ -507,10 +508,10 @@ module Flag =
   | ClassName of string
   | Name of Semantic.Elements.Flags.Flag
        ///Other React props
-    | Props of Fable.Helpers.React.Props.IHTMLProp list
-    with interface Fable.Helpers.React.Props.IHTMLProp
+    | Props of Fable.React.Props.IHTMLProp list
+    with interface Fable.React.Props.IHTMLProp
   let flag (props : Options list ) =
        let p = props |> List.fold ( fun s x -> match x with 
                                                 | Props x -> s @ x 
-                                                | a -> (a :> Fable.Helpers.React.Props.IHTMLProp ) :: s  ) []
+                                                | a -> (a :> Fable.React.Props.IHTMLProp ) :: s  ) []
        ofImport "Flag" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p) []

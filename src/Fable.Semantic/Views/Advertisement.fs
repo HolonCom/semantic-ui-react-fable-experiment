@@ -1,6 +1,7 @@
 namespace Semantic.Views.Api
 
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.Core
 [<RequireQualifiedAccess>]
 module Advertisement = 
@@ -44,4 +45,4 @@ module Advertisement =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Advertisement" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+    ofImport "Advertisement" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)

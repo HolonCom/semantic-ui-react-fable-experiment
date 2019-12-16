@@ -1,8 +1,8 @@
 namespace Semantic.Views.Api
 open Fable.Core
-open Fable.Helpers.React.Props
+open Fable.React.Props
 open Semantic
-open Fable.Import.React
+open Fable.React
 
 [<RequireQualifiedAccess>]
 module Card =
@@ -25,7 +25,7 @@ module Card =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Card" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Card" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
   
   module Content =
       
@@ -41,7 +41,7 @@ module Card =
       let p = props |> List.fold ( fun s x -> match x with 
                                                   | Content.Props x -> s @ x 
                                                   | a -> (a :> IHTMLProp ) :: s  ) []
-      Fable.Helpers.React.ofImport "Card.Content" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+      ofImport "Card.Content" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Description  =
       type Options =
@@ -54,7 +54,7 @@ module Card =
       let p = props |> List.fold ( fun s x -> match x with 
                                                   | Description.Props x -> s @ x 
                                                   | a -> (a :> IHTMLProp ) :: s  ) []
-      Fable.Helpers.React.ofImport "Card.Description" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+      ofImport "Card.Description" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Group   =
       type Options =
@@ -71,7 +71,7 @@ module Card =
       let p = props |> List.fold ( fun s x -> match x with 
                                                   | Group.Props x -> s @ x 
                                                   | a -> (a :> IHTMLProp ) :: s  ) []
-      Fable.Helpers.React.ofImport "Card.Group" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+      ofImport "Card.Group" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Header  =
       type Options =
@@ -84,7 +84,7 @@ module Card =
       let p = props |> List.fold ( fun s x -> match x with 
                                                   | Header.Props x -> s @ x 
                                                   | a -> (a :> IHTMLProp ) :: s  ) []
-      Fable.Helpers.React.ofImport "Card.Header" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+      ofImport "Card.Header" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Meta  =
       type Options =
@@ -97,4 +97,4 @@ module Card =
       let p = props |> List.fold ( fun s x -> match x with 
                                                   | Meta.Props x -> s @ x 
                                                   | a -> (a :> IHTMLProp ) :: s  ) []
-      Fable.Helpers.React.ofImport "Card.Meta" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+      ofImport "Card.Meta" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  

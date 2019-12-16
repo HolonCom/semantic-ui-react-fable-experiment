@@ -1,9 +1,9 @@
 namespace Semantic.Elements.Api
 
 open Fable.Core
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open System.Drawing
-open Fable.Import.React
 
 [<RequireQualifiedAccessAttribute>]
 module Image = 
@@ -42,9 +42,9 @@ module Image =
         let p = props |> List.fold ( fun s q -> match q with 
                                                     | Options.Props x -> s @ x 
                                                     | a -> (a :> IHTMLProp ) :: s  ) [] 
-        Fable.Helpers.React.ofImport "Image" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p) []
+        ofImport "Image" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p) []
   let groupp (props: Options list) =
         let p = props |> List.fold ( fun s q -> match q with 
                                                     | Options.Props x -> s @ x 
                                                     | a -> (a :> IHTMLProp ) :: s  ) [] 
-        Fable.Helpers.React.ofImport "Image.Group" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p) 
+        ofImport "Image.Group" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p) 

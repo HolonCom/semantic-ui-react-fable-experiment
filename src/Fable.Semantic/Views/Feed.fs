@@ -2,7 +2,8 @@ namespace Semantic.Views.Api
 
 open Fable
 open Fable.Core
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 [<RequireQualifiedAccess>]
 module Feed =
   [<StringEnum>]
@@ -17,7 +18,7 @@ module Feed =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Feed" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Feed" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
   
   module Content =
     type Options =
@@ -29,7 +30,7 @@ module Feed =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Content.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Feed.Content" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Feed.Content" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Date =
     type Options =
@@ -41,7 +42,7 @@ module Feed =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Date.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Feed.Date" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Feed.Date" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Event =
     type Options =
@@ -53,7 +54,7 @@ module Feed =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Event.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Feed.Event" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Feed.Event" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Extra =
     type Options =
@@ -67,7 +68,7 @@ module Feed =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Extra.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Feed.Extra" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Feed.Extra" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Label =
     type Options =
@@ -79,7 +80,7 @@ module Feed =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Label.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Feed.Label" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Feed.Label" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Like =
     type Options =
@@ -91,7 +92,7 @@ module Feed =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Like.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Feed.Like" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Feed.Like" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Meta =
     type Options =
@@ -103,7 +104,7 @@ module Feed =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Meta.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Feed.Meta" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Feed.Meta" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Summary =
     type Options =
@@ -115,7 +116,7 @@ module Feed =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Summary.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Feed.Summary" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Feed.Summary" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module User =
     type Options =
@@ -127,4 +128,4 @@ module Feed =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | User.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Feed.User" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Feed.User" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  

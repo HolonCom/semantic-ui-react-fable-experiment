@@ -1,8 +1,8 @@
 namespace Semantic.Modules.Api
 
 
-open Fable.Import.React
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.Core
 [<RequireQualifiedAccess>]
 module Sticky =
@@ -26,4 +26,4 @@ module Sticky =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Sticky" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+    ofImport "Sticky" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)

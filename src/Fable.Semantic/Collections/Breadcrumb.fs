@@ -2,8 +2,8 @@ namespace Semantic.Collections.Api
 
 open Fable.Core
 open System
-open Fable.Helpers.React.Props
-open Fable.Import.React
+open Fable.React.Props
+open Fable.React
 
 [<RequireQualifiedAccessAttribute>]
 module Breadcrumb = 
@@ -18,7 +18,7 @@ module Breadcrumb =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Breadcrumb" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Breadcrumb" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
   
   module Divider =
     type Options =
@@ -32,7 +32,7 @@ module Breadcrumb =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Divider.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Breadcrumb.Divider" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  []
+    ofImport "Breadcrumb.Divider" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  []
   
   module Section =
       type Options =
@@ -49,4 +49,4 @@ module Breadcrumb =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Section.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Breadcrumb.Section" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Breadcrumb.Section" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  

@@ -1,9 +1,9 @@
 namespace Semantic.Collections.Api
 
 open Fable.Core
-open Fable.Import.React
 open Semantic
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable
 
 [<RequireQualifiedAccess>]
@@ -44,7 +44,7 @@ module Menu =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Menu" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Menu" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
   
   module Header =
     type Options =
@@ -57,7 +57,7 @@ module Menu =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Header.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Menu.Header" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Menu.Header" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
  
   module Submenu =
     type Options =
@@ -71,7 +71,7 @@ module Menu =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Submenu.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Menu.Menu" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Menu.Menu" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
   
   module Item =
     [<StringEnum>]
@@ -98,4 +98,4 @@ module Menu =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Item.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Menu.Item" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p) 
+    ofImport "Menu.Item" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p) 

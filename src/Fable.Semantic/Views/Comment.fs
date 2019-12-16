@@ -1,5 +1,6 @@
 namespace Semantic.Views.Api
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.Core
 
 [<RequireQualifiedAccess>]
@@ -15,7 +16,7 @@ module Comment =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Comment" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Comment" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Action =
     type Options =
@@ -29,7 +30,7 @@ module Comment =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Action.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Comment.Action" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Comment.Action" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Actions =
     type Options =
@@ -42,7 +43,7 @@ module Comment =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Actions.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Comment.Actions" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Comment.Actions" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Author =
     type Options =
@@ -55,7 +56,7 @@ module Comment =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Author.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Comment.Author" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Comment.Author" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Avatar =
     type Options =
@@ -69,7 +70,7 @@ module Comment =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Avatar.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Comment.Avatar" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  []
+    ofImport "Comment.Avatar" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  []
 
   module Content =
     type Options =
@@ -82,7 +83,7 @@ module Comment =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Content.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Comment.Content" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+    ofImport "Comment.Content" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
 
   module Group =
     type Options =
@@ -99,7 +100,7 @@ module Comment =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Group.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Comment.Group" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p) 
+    ofImport "Comment.Group" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p) 
 
   module Metadata =
     type Options =
@@ -112,7 +113,7 @@ module Comment =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Metadata.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Comment.Metadata" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+    ofImport "Comment.Metadata" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
 
   module Text =
     type Options =
@@ -125,4 +126,4 @@ module Comment =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Text.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Comment.Text" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+    ofImport "Comment.Text" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)

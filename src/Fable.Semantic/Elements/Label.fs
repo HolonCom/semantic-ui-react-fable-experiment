@@ -1,8 +1,8 @@
 namespace rec Semantic.Elements.Api 
 
 open Fable.Core
-open Fable.Helpers.React.Props
-open Fable.Import.React
+open Fable.React.Props
+open Fable.React
 
 [<RequireQualifiedAccessAttribute>]
 module Label =
@@ -17,7 +17,7 @@ module Label =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Detail.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Label.Detail" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Label.Detail" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
   [<StringEnum>] 
   type Attached = 
   | Top
@@ -65,7 +65,7 @@ module Label =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Label" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Label" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
   module Group =
     type Options =
     | As of string
@@ -81,4 +81,4 @@ module Label =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Group.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Label.Group" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Label.Group" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  

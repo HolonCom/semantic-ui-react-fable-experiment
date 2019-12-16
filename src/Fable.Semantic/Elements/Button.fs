@@ -1,9 +1,9 @@
 namespace Semantic.Elements.Api
 
 
-open Fable.Helpers.React.Props
+open Fable.React.Props
 open Fable.Import
-open Fable.Helpers.React
+open Fable.React
 open Fable.Core
 
 [<RequireQualifiedAccess>]

@@ -2,7 +2,7 @@ module Wireframe
 
 open Fable.Core
 open Semantic.Elements.Api
-open Fable.Helpers.React
+open Fable.React
 
 let wireframe () = 
    div [] [

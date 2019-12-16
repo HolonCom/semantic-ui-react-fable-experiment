@@ -1,7 +1,8 @@
 namespace Semantic.Elements.Api
 
 
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Fable.Core
 [<RequireQualifiedAccess>]
 module Container =
@@ -23,4 +24,4 @@ module Container =
 
    let container (props: ContentOptions list ) = 
        let htmlProps = props |> List.fold (fun s x -> match x with | Props p ->  s @ p | a -> (a :> IHTMLProp) ::s ) []
-       Fable.Helpers.React.ofImport "Container" "semantic-ui-react" ( Fable.Core.JsInterop.keyValueList CaseRules.LowerFirst htmlProps )
+       ofImport "Container" "semantic-ui-react" ( Fable.Core.JsInterop.keyValueList CaseRules.LowerFirst htmlProps )

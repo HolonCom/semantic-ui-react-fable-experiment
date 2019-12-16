@@ -1,12 +1,11 @@
 module Client
 open Elmish
 open Elmish.React
-open Fable.Helpers.React
 open Semantic.Elements.Api
 open Semantic.Elements
 open Semantic.Collections.Api
-open Fable.Helpers.React.Props
-open Fable.Import.React
+open Fable.React.Props
+open Fable.React
 open Fable
 open Semantic
 
@@ -18,7 +17,7 @@ type Model = {
     text : string
     isMessageHidden : bool
     Visibility :  Semantic.Behaviors.Api.Visibility.Calculations option
-    // StickyContext : Fable.Import.Browser.Element option
+    // StickyContext : Browser.Dom.Element option
 } with static member Init () = {
                                   counter = Some 42
                                   activeMenuItem = ""
@@ -36,7 +35,7 @@ type Msg =
  | NewText of string
  | DismissMessage
  | OnVisibilityUpdate of Semantic.Behaviors.Api.Visibility.Calculations
-//  | SetStickyContext of Fable.Import.Browser.Element
+//  | SetStickyContext of Browser.Dom.Element
 let init () : Model * Cmd<Msg> = 
     Model.Init () , Cmd.none
 let update (msg : Msg) (model : Model) : Model * Cmd<Msg> =
@@ -85,7 +84,7 @@ let generateRows:Semantic.Behaviors.Api.Visibility.Calculations option -> ReactE
                           generateRow "passing" v.passing ]
 
 let view (model : Model) (dispatch : Msg -> unit) = 
-  let mutable contextRef: Fable.Import.Browser.Element option = None
+  let mutable contextRef: Browser.Dom.Element Fable.React.Standard.option = None
   div [] [
     Menu.menu [ 
         Menu.Inverted true
@@ -114,7 +113,7 @@ let view (model : Model) (dispatch : Msg -> unit) =
     ]
     Container.container [ 
                           Container.TextAlign Semantic.CenterText
-                          Container.Props [ OnClick (fun _ -> Fable.Import.Browser.console.warn ("Hello!") ) ] ]  
+                          Container.Props [ OnClick (fun _ -> Browser.Dom.console.warn ("Hello!") ) ] ]  
                         [
                           renderMesage model dispatch |> Option.defaultValue (str "")
                           Header.header [ Header.Size <| Header.Huge] 
@@ -150,7 +149,7 @@ let view (model : Model) (dispatch : Msg -> unit) =
                                                                                  ]
                                                             ]
                                                 Button.or'  [ Button.Or.Text  <| (match model.counter with | Some x -> string x | None -> "Loading...")
-                                                              Button.Or.Props [ OnClick ( fun _ ->  Fable.Import.Browser.window.alert ( model |> string ) ) ]  ]
+                                                              Button.Or.Props [ OnClick ( fun _ ->  Browser.Dom.window.alert ( model |> string ) ) ]  ]
                                                 Button.button
                                                      [ Button.OnClick (fun _ -> dispatch Increment )
                                                        Button.Animated Button.Fade
@@ -217,7 +216,7 @@ let view (model : Model) (dispatch : Msg -> unit) =
                                           Grid.Row.Columns Semantic.N1
                                       ] [
                                           Grid.column [] [
-                                               Input.input [ Input.Label <|  Button.button [  Button.OnClick (fun _ -> Fable.Import.Browser.window.alert( model.text ) ) ] [ str model.text ]  
+                                               Input.input [ Input.Label <|  Button.button [  Button.OnClick (fun _ -> Browser.Dom.window.alert( model.text ) ) ] [ str model.text ]  
                                                              Input.Placeholder "Type here, its reactive!" 
                                                              Input.OnChange ( fun s a  -> (match a.value with | null | "" -> "with React" | a  -> a) |> NewText |> dispatch ) ] []
 
@@ -323,7 +322,7 @@ let view (model : Model) (dispatch : Msg -> unit) =
                               ]
                               Table.footer [] [
                                   Table.row [] [
-                                      Table.headerCell [ Table.HeaderCell.Props [ ColSpan 3. ]  ] [
+                                      Table.headerCell [ Table.HeaderCell.Props [ ColSpan 3 ]  ] [
                                           Menu.menu [ Menu.Floated Menu.Right
                                                       Menu.Pagination true ] [
                                                           Menu.item [
@@ -348,7 +347,7 @@ let view (model : Model) (dispatch : Msg -> unit) =
                           ]
                 ]
     div [
-        Ref ( fun e -> Fable.Import.Browser.console.log(e)
+        Ref ( fun e -> Browser.Dom.console.log(e)
                        contextRef <- Some e)
     ] [
         Grid.grid [] [

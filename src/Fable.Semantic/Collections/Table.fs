@@ -1,7 +1,8 @@
 namespace Semantic.Collections.Api
 
 open Fable.Core
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open Semantic
 open Fable
 
@@ -46,7 +47,7 @@ module Table =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Table" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+    ofImport "Table" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
   
   module Body =
     type Options =
@@ -58,7 +59,7 @@ module Table =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Body.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Table.Body" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+    ofImport "Table.Body" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
   
   module Cell =
     type Options =
@@ -84,7 +85,7 @@ module Table =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Cell.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Table.Cell" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+    ofImport "Table.Cell" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
   
   module Footer = 
     type Options =
@@ -96,7 +97,7 @@ module Table =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Footer.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Table.Footer" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+    ofImport "Table.Footer" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
  
   module Header =
    type Options =
@@ -110,7 +111,7 @@ module Table =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Header.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Table.Header" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+    ofImport "Table.Header" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
   
   module HeaderCell = //TODO inherit from Cell
    [<StringEnum>]
@@ -126,7 +127,7 @@ module Table =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | HeaderCell.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Table.HeaderCell" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+    ofImport "Table.HeaderCell" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
   
   module Row =
     type Options =
@@ -148,4 +149,4 @@ module Table =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Row.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Table.Row" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)
+    ofImport "Table.Row" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)

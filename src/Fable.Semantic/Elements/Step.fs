@@ -1,8 +1,7 @@
 namespace rec Semantic.Elements.Api
 open Fable.Core
-open Fable.Import.React
-open Fable.Helpers.React.Props
-open Fable.Import.React
+open Fable.React.Props
+open Fable.React
 open Fable
 open System.Text.RegularExpressions
 [<RequireQualifiedAccess>]
@@ -43,7 +42,7 @@ module Step =
                                                   // | Options.Title x ->((let q = JsInterop.keyValueList CaseRules.LowerFirst x
                                                   //                       TitlePlaceholder.Title q) :> IHTMLProp) :: s
                                                   | a -> (a :> IHTMLProp ) :: s  ) []
-      Fable.Helpers.React.ofImport "Step" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+      ofImport "Step" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
    
     module Content =
       type Options =
@@ -58,7 +57,7 @@ module Step =
           let p = props |> List.fold ( fun s x -> match x with 
                                                   | Content.Props x -> s @ x 
                                                   | a -> (a :> IHTMLProp ) :: s  ) []
-          Fable.Helpers.React.ofImport "Step.Content" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+          ofImport "Step.Content" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
     
     module Description =
       type Options =
@@ -72,7 +71,7 @@ module Step =
           let p = props |> List.fold ( fun s x -> match x with 
                                                   | Description.Props x -> s @ x 
                                                   | a -> (a :> IHTMLProp ) :: s  ) []
-          Fable.Helpers.React.ofImport "Step.Description" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+          ofImport "Step.Description" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
     
     module Group =
 
@@ -105,7 +104,7 @@ module Step =
                                                   | a -> (a :> IHTMLProp ) :: s  ) []
 
 
-          Fable.Helpers.React.ofImport "Step.Group" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+          ofImport "Step.Group" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
     
     module Title =
       type Options =
@@ -119,4 +118,4 @@ module Step =
           let p = props |> List.fold ( fun s x -> match x with 
                                                   | Title.Props x -> s @ x 
                                                   | a -> (a :> IHTMLProp ) :: s  ) []
-          Fable.Helpers.React.ofImport "Step.Title" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+          ofImport "Step.Title" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  

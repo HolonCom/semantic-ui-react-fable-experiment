@@ -1,7 +1,8 @@
 namespace Semantic.Views.Api
 open Fable.Core
 
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 [<RequireQualifiedAccess>]
 module Item =
   type Options = 
@@ -14,7 +15,7 @@ module Item =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Item" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)    
+    ofImport "Item" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)    
 
   module Content =
     type Options =
@@ -28,7 +29,7 @@ module Item =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Content.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Item.Content" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)    
+    ofImport "Item.Content" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)    
 
   module Description =
     type Options =
@@ -41,7 +42,7 @@ module Item =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Description.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Item.Description" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)    
+    ofImport "Item.Description" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)    
 
   module Extra =
     type Options =
@@ -53,7 +54,7 @@ module Item =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Extra.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Item.Extra" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Item.Extra" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   module Group =
     type Options =
@@ -71,7 +72,7 @@ module Item =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Group.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Item.Group" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p) 
+    ofImport "Item.Group" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p) 
 
 
   module Header =
@@ -84,13 +85,13 @@ module Item =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Header.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Item.Header" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Item.Header" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
   let image (props: Semantic.Elements.Api.Image.Options list) = 
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Semantic.Elements.Api.Image.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Item.Image" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Item.Image" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
 
 
   module Metadata =
@@ -104,4 +105,4 @@ module Item =
     let p = props |> List.fold ( fun s x -> match x with 
                                                 | Metadata.Props x -> s @ x 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-    Fable.Helpers.React.ofImport "Item.Metadata" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  
+    ofImport "Item.Metadata" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  

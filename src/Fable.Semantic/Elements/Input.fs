@@ -3,10 +3,9 @@ namespace Semantic.Elements.Api
 open Fable.Import
 open Fable.Core
 open Fable
-open Fable.Helpers.React.Props
+open Fable.React
+open Fable.React.Props
 open System
-open Fable.Helpers
-open Fable.Import.React
 [<RequireQualifiedAccessAttribute>]
 module Input =
   [<StringEnum>]
@@ -34,7 +33,7 @@ module Input =
       ///An Input can be formatted to appear on dark backgrounds.
       | Inverted of bool
       | [<CompiledName "label">]LabelText of string
-      | Label of Fable.Import.React.ReactElement
+      | Label of ReactElement
       ///A Label can appear outside an Input on the left or right.
       | LabelPosition of Semantic.Floats
       ///An Icon Input field can show that it is currently loading data.
@@ -43,7 +42,7 @@ module Input =
       /// OnClick ( fun (event, data) -> .. ) 
       /// event - React's original SyntheticEvent.
       /// data - All props.
-      | OnChange of  (React.SyntheticEvent ->  Val -> unit)
+      | OnChange of  (Browser.Types.MouseEvent ->  Val -> unit)
       ///An Input can vary in size.
       | Size of Semantic.Sizes
       ///A button can receive focus.
@@ -60,4 +59,4 @@ module Input =
                                                 | Props x -> s @ x 
                                                 // | OnChange x -> 
                                                 | a -> (a :> IHTMLProp ) :: s  ) []
-        Fable.Helpers.React.ofImport "Input" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  s 
+        ofImport "Input" "semantic-ui-react" (JsInterop.keyValueList CaseRules.LowerFirst p)  s 
