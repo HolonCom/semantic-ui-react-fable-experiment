@@ -10,7 +10,6 @@ open System
 module Input =
   [<StringEnum>]
   type Position = | Left
-  [<Pojo>]
   type Val = { value : string }
   type ActionType = | [<CompiledNameAttribute "action">] ActionPlaceholder of obj with interface IHTMLProp
   type Options =
