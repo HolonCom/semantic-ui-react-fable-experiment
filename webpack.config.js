@@ -41,7 +41,7 @@ module.exports = {
         filename: "bundle.js"
     },
     resolve: {
-        modules: [resolve("../../node_modules/")],
+        modules: [resolve("./node_modules/")],
         // See https://github.com/fable-compiler/Fable/issues/1490
         symlinks: false
     },
