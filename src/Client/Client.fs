@@ -84,7 +84,7 @@ let generateRows:Semantic.Behaviors.Api.Visibility.Calculations option -> ReactE
                           generateRow "passing" v.passing ]
 
 let view (model : Model) (dispatch : Msg -> unit) = 
-  let mutable contextRef: Browser.Dom.Element Fable.React.Standard.option = None
+  let mutable contextRef: Browser.Types.Element option = None
   div [] [
     Menu.menu [ 
         Menu.Inverted true
@@ -397,9 +397,9 @@ open Elmish.HMR
 Program.mkProgram init update view
 #if DEBUG
 |> Program.withConsoleTrace
-|> Program.withHMR
+//|> Program.withHMR
 #endif
-|> Program.withReact "elmish-app"
+|> Program.withReactBatched "elmish-app"
 #if DEBUG
 |> Program.withDebugger
 #endif

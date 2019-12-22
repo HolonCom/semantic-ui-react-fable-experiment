@@ -12,7 +12,10 @@ open Fake.Core
 open Fake.DotNet
 open Fake.IO
 
+//let serverPath = Path.getFullName "./src/Server"
 let clientPath = Path.getFullName "./src/Client"
+let clientDeployPath = Path.combine clientPath "deploy"
+let deployDir = Path.getFullName "./deploy"
 
 let platformTool tool winTool =
     let tool = if Environment.isUnix then tool else winTool
@@ -27,45 +30,39 @@ let platformTool tool winTool =
 
 let nodeTool = platformTool "node" "node.exe"
 let npmTool = platformTool "npm" "npm.cmd"
-
-let install = lazy DotNet.install DotNet.Versions.FromGlobalJson
-
-let inline withWorkDir wd =
-    DotNet.Options.lift install.Value
-    >> DotNet.Options.withWorkingDirectory wd
+let npxTool = platformTool "npx" "npx.cmd"
 
 let runTool cmd args workingDir =
-    let result =
-        Process.execSimple (fun info ->
-            { info with
-                FileName = cmd
-                WorkingDirectory = workingDir
-                Arguments = args })
-            TimeSpan.MaxValue
-    if result <> 0 then failwithf "'%s %s' failed" cmd args
+    let arguments = args |> String.split ' ' |> Arguments.OfArgs
+    Command.RawCommand (cmd, arguments)
+    |> CreateProcess.fromCommand
+    |> CreateProcess.withWorkingDirectory workingDir
+    |> CreateProcess.ensureExitCode
+    |> Proc.run
+    |> ignore
 
 let runDotNet cmd workingDir =
     let result =
         DotNet.exec (DotNet.Options.withWorkingDirectory workingDir) cmd ""
     if result.ExitCode <> 0 then failwithf "'dotnet %s' failed in %s" cmd workingDir
 
-let runNpx cmd workingDir =
-    let result =
-        DotNet.exec (DotNet.Options.withWorkingDirectory workingDir) cmd ""
-    if result.ExitCode <> 0 then failwithf "'npx %s' failed in %s" cmd workingDir
-
 let openBrowser url =
-    let result =
-        //https://github.com/dotnet/corefx/issues/10361
-        Process.execSimple (fun info ->
-            { info with
-                FileName = url
-                UseShellExecute = true })
-            TimeSpan.MaxValue
-    if result <> 0 then failwithf "opening browser failed"
+    //https://github.com/dotnet/corefx/issues/10361
+    Command.ShellCommand url
+    |> CreateProcess.fromCommand
+    |> CreateProcess.ensureExitCodeWithMessage "opening browser failed"
+    |> Proc.run
+    |> ignore
+
+
+Target.create "Clean" (fun _ ->
+    [ deployDir
+      clientDeployPath ]
+    |> Shell.cleanDirs
+)
 
 Target.create "InstallClient" (fun _ ->
-    Trace.tracefn "Node version:"
+    printfn "Node version:"
     runTool nodeTool "--version" __SOURCE_DIRECTORY__
     printfn "Npm version:"
     runTool npmTool "--version"  __SOURCE_DIRECTORY__
@@ -74,19 +71,31 @@ Target.create "InstallClient" (fun _ ->
 )
 
 Target.create "Build" (fun _ ->
-    runNpx "webpack -p" clientPath
+    //runDotNet "build" serverPath
+    runTool npxTool "webpack-cli -p" __SOURCE_DIRECTORY__
 )
 
 Target.create "Run" (fun _ ->
+    //let server = async {
+    //    runDotNet "watch run" serverPath
+    //}
     let client = async {
-        runDotNet "fable webpack-dev-server" clientPath
+        runTool npxTool "webpack-dev-server" __SOURCE_DIRECTORY__
     }
     let browser = async {
         do! Async.Sleep 5000
         openBrowser "http://localhost:8080"
     }
 
-    [client; browser ]
+    let vsCodeSession = Environment.hasEnvironVar "vsCodeSession"
+    let safeClientOnly = Environment.hasEnvironVar "safeClientOnly"
+
+    let tasks =
+        [ //if not safeClientOnly then yield server
+          yield client
+          if not vsCodeSession then yield browser ]
+
+    tasks
     |> Async.Parallel
     |> Async.RunSynchronously
     |> ignore
@@ -94,11 +103,13 @@ Target.create "Run" (fun _ ->
 
 open Fake.Core.TargetOperators
 
-"InstallClient"
+"Clean"
+    ==> "InstallClient"
     ==> "Build"
 
-"InstallClient"
+
+"Clean"
+    ==> "InstallClient"
     ==> "Run"
 
 Target.runOrDefaultWithArguments "Build"
-
